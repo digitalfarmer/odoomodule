@@ -5,7 +5,20 @@ from odoo import http
 #     @http.route('/academy/academy/', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"
+class Academy(http.Controller):
+    @http.route('/academy/academy/', auth='public', website=True)
+    def index(self, **kw):
+            #return "Module Academy"
+        Teachers = http.request.env['academy.teachers']
+        return http.request.render('academy.index', {
+            'teachers': Teachers.search([])
+        })
 
+    @http.route('/academy/<model("academy.teachers"):teacher>/', auth='public', website=True)
+    def teacher(self, teacher):
+        return http.request.render('academy.biography', {
+            'person': teacher
+        })
 #     @http.route('/academy/academy/objects/', auth='public')
 #     def list(self, **kw):
 #         return http.request.render('academy.listing', {

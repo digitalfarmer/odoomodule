@@ -4,7 +4,11 @@ from odoo import models, fields, api
 
 # class academy(models.Model):
 #     _name = 'academy.academy'
+class Teachers(models.Model):
+    _name = 'academy.teachers'
 
+    name = fields.Char()
+    biography = fields.Html()
 #     name = fields.Char()
 #     value = fields.Integer()
 #     value2 = fields.Float(compute="_value_pc", store=True)
