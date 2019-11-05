@@ -42,7 +42,9 @@
                 <div class="oe_structure">
                     <div class="container">
                         <p>
-                            <t t-esc="person.id"/><t t-esc="person.name"/>
+                            <h3 t-field="person.name"/><h3/>
+                            <p> Last Modified : <i t-field="person.write_date" t-options="{'format':'long'}"/></p>
+                            <div t-field="person.biography"/>
                         </p>
                     </div>
                 </div>
