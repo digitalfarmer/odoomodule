@@ -6,12 +6,16 @@ from odoo import models, fields, api
 #     _name = 'academy.academy'
 class Teachers(models.Model):
     _name = 'academy.teachers'
+    _inherit = 'mail.thread'
 
     name = fields.Char()
     biography = fields.Html()
 
+    courses_ids = fields.One2many('academy.courses', 'teacher_id', string="Courses")
+
 class Courses(models.Model):
     _name = 'academy.courses'
+    _inherit = 'mail.thread'
 
     name = fields.Char()
     teacher_id = fields.Many2one('academy.teachers', string='Teacher')
