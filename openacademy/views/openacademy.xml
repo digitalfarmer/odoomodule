@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.actions.act_window" id="course_list_action">
+        <field name="name">Course</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create the First Course
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="course_form_view">
+        <field name="name">course.form</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <form string="Course Form">
+                <header>
+                    <button string="Confirm" type="object" name="action_confirm" />
+                    <button string="Mark as done" type="object" name="action_done" />
+                    <button string="Reset to draft" type="object" name="action_draft" />
+<!--                    <field name="state" widget="statusbar"/>-->
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Course Name"/>
+                        <field name="name"/>
+                        <field name="responsible_id"/>
+                    </div>
+                    <separator string="General" colspan="2" />
+                    <group colspan="2" col="2">
+                        <notebook>
+                            <page string="Description">
+                                <field name="description" placeholder="Course Description here ..."/>
+                            </page>
+                            <page string="About">
+                                this example notebook
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="course_search_view" model="ir.ui.view">
+       <field name="name">course.search</field>
+       <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <search string="Seach Course ..">
+<!--<field name="name" string="string" domain="[()]"/>-->
+                <field name="name"/>
+                <field name="description"/>
+            </search>
+       </field>
+    </record>
+<!--session view -->
+    <record model="ir.ui.view" id="session_form_view">
+            <field name="name">session.form</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <form string="Session Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="start_date"/>
+                            <field name="duration"/>
+                            <field name="seats"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="session_list_action">
+        <field name="name">Sessions</field>
+        <field name="model">openacademy.session</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create new Session
+            </p>
+        </field>
+    </record>
+
+    <!-- override the automatically generated list view for courses -->
+    <record model="ir.ui.view" id="course_tree_view">
+        <field name="name">course.tree</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <tree string="Course Tree">
+                <field name="name"/>
+                <field name="responsible_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="session_menu" name="Sessions"
+                  parent="openacademy_menu"
+                  action="session_list_action"/>
+
+    <menuitem id="main_openacademy_menu" name="Open Academy"/>
+    <menuitem id="openacademy_menu" name="Open Academy" parent="main_openacademy_menu"/>
+    <menuitem id="course_menu" name="Course" parent="openacademy_menu" action="course_list_action"/>
+
+</odoo>
