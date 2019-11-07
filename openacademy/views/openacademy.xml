@@ -35,6 +35,14 @@
                             <page string="Description">
                                 <field name="description" placeholder="Course Description here ..."/>
                             </page>
+                            <page string="Sessions">
+                                <field name="session_ids">
+                                    <tree string="Registered Sessions">
+                                        <field name="name"/>
+                                        <field name="instructor_id"/>
+                                    </tree>
+                                </field>
+                            </page>
                             <page string="About">
                                 this example notebook
                             </page>
@@ -64,14 +72,32 @@
                 <form string="Session Form">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="start_date"/>
-                            <field name="duration"/>
-                            <field name="seats"/>
+                            <group string="General">
+                                <field name="course_id"/>
+                                <field name="name"/>
+                                <field name="instructor_id"/>
+                            </group>
+                            <group string="Schedule">
+                                <field name="start_date"/>
+                                <field name="duration"/>
+                                <field name="seats"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
             </field>
+    </record>
+
+    <!--session_tree-->
+    <record id="session_tree_view" model="ir.ui.view">
+        <field name="name">session.tree</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <tree string="Session Tree">
+                <field name="name"/>
+                <field name="course_id"/>
+            </tree>
+        </field>
     </record>
 
     <record model="ir.actions.act_window" id="session_list_action">
@@ -85,6 +111,8 @@
             </p>
         </field>
     </record>
+
+
 
     <!-- override the automatically generated list view for courses -->
     <record model="ir.ui.view" id="course_tree_view">
