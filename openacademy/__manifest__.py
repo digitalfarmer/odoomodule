@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "openacademy",
+    'name': "Open Academy",
 
     'summary': """
         Manage Trainings""",
