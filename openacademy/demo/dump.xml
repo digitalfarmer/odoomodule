@@ -1,10 +1,11 @@
- <search>
-                    <field name="name"/>
-                    <field name="description"/>
-                    <filter name="my_courses" string="My Courses"
-                            domain="[('responsible_id', '=', uid)]"/>
-                    <group string="Group By">
-                        <filter name="by_responsible" string="Responsible"
-                                context="{'group_by': 'responsible_id'}"/>
-                    </group>
-                </search>
+ <record model="ir.ui.view" id="session_gantt_view">
+            <field name="name">session.gantt</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <gantt string="Session Gantt"
+                       date_start="start_date" date_delay="hours"
+                       default_group_by='instructor_id'>
+                    <!-- <field name="name"/> this is not required after Odoo 10.0 -->
+                </gantt>
+            </field>
+        </record>
