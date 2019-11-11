@@ -1,7 +1,6 @@
-<odoo>
-
-        <record id="group_manager" model="res.groups">
-            <field name="name">OpenAcademy / Manager</field>
-        </record>
-
-</odoo>
+<footer>
+                        <button name="subscribe" type="object"
+                                string="Subscribe" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
