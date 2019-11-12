@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
-        <record model="ir.actions.act_window" id="act_session_graph">
+    <record model="ir.actions.act_window" id="act_session_graph">
             <field name="name">Attendees by course</field>
             <field name="res_model">openacademy.session</field>
             <field name="view_type">form</field>
@@ -57,10 +56,9 @@
           <field name="view_id" ref="board_session_form"/>
         </record>
 
-        <menuitem
-            name="Session Dashboard" parent="base.menu_reporting_dashboard"
-            action="open_board_session"
-            sequence="1"
-            id="menu_board_session"/>
-
+    <menuitem name="Session Dashboard"
+              action="open_board_session"
+              sequence="1"
+              id="menu_board_session"
+              parent="base.menu_reporting_dashboard" />
 </odoo>
